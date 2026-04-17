@@ -56,7 +56,7 @@ The model weights ship with the repo under `ProteinMPNN/model_params/proteinmpnn
 
 ## Usage
 
-1. Allocate a GPU (see **HPC note** below).
+1. Allocate a GPU (The scoring step requires a GPU. CPU-only execution works but it may be slow).
 2. Open `expression_rescue.ipynb` in Jupyter.
 3. Edit the **User inputs** cell:
    - `bound_pdb_path`: path to the antibody–antigen complex PDB
@@ -92,8 +92,7 @@ All written to `<output_dir>/`:
 Step 8 renders both logit-colored structures inline in the notebook via `py3Dmol` using a **red-white-blue** gradient (low logit → red = WT disfavored; high logit → blue = WT preferred) with a shared color scale so the two panels are directly comparable. For a higher-fidelity view, open either file in PyMOL:
 
 ```
-pymol output/<stem>_logits.pdb -d 'spectrum b, red_white_blue'
-pymol output/<stem>_unbound_logits.pdb -d 'spectrum b, red_white_blue'
+spectrum b, red_white_blue
 ```
 
 ## How to read the outputs
@@ -108,19 +107,6 @@ pymol output/<stem>_unbound_logits.pdb -d 'spectrum b, red_white_blue'
 2. Take the **top 3** positions by ascending `WT_unbound_logit` (the positions where the WT amino acid is least favored when the antigen is removed — these are the strongest expression-rescue targets).
 3. At each of those three positions, introduce the `best_aa` substitution (the amino acid with the highest unbound logit). The notebook prints the three mutations in the form `WT{resnum}best_aa` directly below the ranking table, and the same selection is stored in `rescue_ranking.csv` under `top_k=True`.
 4. `top_k_rescue` in the user-inputs cell controls the size of the highlighted set if you want a different cutoff.
-
-## HPC note
-
-The scoring step requires a GPU.
-
-```bash
-# Interactive session (recommended for notebook work)
-srun --partition=gpu --gres=gpu:A5000:1 --cpus-per-task=4 --mem=32G --time=4:00:00 --pty bash
-conda activate expression_rescue
-jupyter notebook
-```
-
-CPU-only execution works but it may be slow.
 
 ## Citations
 
