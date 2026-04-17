@@ -1,0 +1,20 @@
+# Pipeline outputs
+output/
+_smoke*.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Editor / tool state
+.vscode/
+.idea/
+.DS_Store
+.claude/

@@ -1,0 +1,48 @@
+# Example inputs for the expression-rescue pipeline.
+# Paste these into the "User inputs" cell of expression_rescue.ipynb.
+
+bound_pdb_path   : example/bound_example.pdb
+antigen_chain_ids: ["A", "B", "C"]   # antigen is a homotrimer
+
+# Rescue residues: antibody CDR-H2 + CDR-H3 positions on the heavy chain (chain D).
+# Chain G is the light chain; add G-chain residues here if you want to include CDR-L loops.
+# Format: "<chain><resnum>" strings.
+rescue_residues:
+  # CDR-H2
+  - D50
+  - D51
+  - D52
+  - D53
+  - D54
+  - D55
+  - D56
+  - D57
+  - D58
+  - D59
+  - D60
+  - D61
+  - D62
+  - D63
+  - D64
+  - D65
+  # CDR-H3
+  - D95
+  - D96
+  - D97
+  - D98
+  - D99
+  - D100
+  - D101
+  - D102
+  - D103
+  - D104
+  - D105
+  - D106
+  - D107
+  - D108
+  - D109
+  - D110
+
+# Analysis knobs (defaults used in the paper).
+binding_logit_threshold: 1.0   # Δ = WT_bound - WT_unbound > threshold => key binding residue (Step 5)
+top_k_rescue: 3                # Step 6 highlights the K positions with the smallest WT unbound logit
