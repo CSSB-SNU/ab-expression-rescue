@@ -2,6 +2,11 @@
 
 ProteinMPNN-based analysis to propose CDR single-point mutations that may rescue antibody expression without disrupting antigen binding. Takes one antibody–antigen complex at a time.
 
+**View the example run with full styling** (GitHub strips `<style>` blocks, so pandas dashboards render plain on github.com):
+
+[![View example on nbviewer](https://img.shields.io/badge/nbviewer-view_example_result-F37626?logo=jupyter&logoColor=white)](https://nbviewer.org/github/CSSB-SNU/ab-expression-rescue/blob/main/example/expression_rescue_example_result.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CSSB-SNU/ab-expression-rescue/blob/main/example/expression_rescue_example_result.ipynb)
+
 ## Overview
 
 Antibodies obtained from *in silico* design, phage-display, or directed evolution can bind their target well yet still express poorly in cell culture. Some CDR residues are preferred for **binding** (stabilized by the antigen contact) while others are preferred only for **expression / solubility** of the antibody alone. Distinguishing the two guides safe rescue mutations: keep the binding residues, change the rest.
