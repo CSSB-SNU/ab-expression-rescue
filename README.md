@@ -80,7 +80,7 @@ The model weights ship with the repo under `ProteinMPNN/model_params/proteinmpnn
    - `top_k_rescue`: how many top-ranked positions Step 6 highlights as the mutations to introduce (default `3`)
    - `user_key_binding_residues` *(optional)*: positions you already know are binding-critical from experiments / prior knowledge; leave empty `[]` to rely solely on the pipeline's Δ-based detection
    - `user_key_binding_mode`: `"union"` (default — pipeline ∪ user) or `"user_only"` (trust only user input). Ignored when `user_key_binding_residues` is empty.
-4. **Run all cells.** When it finishes, scroll to Step 6: the **green "Final rescue mutations" box** is the answer. That's it.
+4. **Run all cells.** When it finishes, scroll to Step 6: the **green "Final rescue mutations" box** is the final rescue mutations that our pipeline recommends.
 
 The notebook is self-contained: each step generates the inputs for the next, so re-running from the top is safe. 
 
@@ -91,15 +91,15 @@ The notebook is self-contained: each step generates the inputs for the next, so 
 
 ## Outputs
 
-All written to `<output_dir>/`. **The file most users need is `rescue_ranking.csv` (rows with `top_k=True`)**; other outputs are for user's understanding and further analysis if needed.
+**You can see major outputs at jupyter notebook output cells in rendered version**, and all raw outputs written to `<output_dir>/`. **The file most users need is `rescue_ranking.csv` (rows with `top_k=True`)**; other outputs are for user's understanding and further analysis if needed.
 
-### Key output
+### Key output (raw output in `<output_dir>/`)
 
 | File | Contents |
 |------|----------|
 | `rescue_ranking.csv` | All rescue residues ranked by WT unbound logit ascending. **Rows with `top_k=True` are the selected mutations** — the same ones shown in the green Step 6 panel. `is_key_binding=True` rows were skipped. |
 
-### Additional outputs
+### Additional outputs (raw output in `<output_dir>/`)
 
 | File | Contents |
 |------|----------|
